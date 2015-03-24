@@ -1,0 +1,40 @@
+bin/
+gen/
+build/
+/workspace
+build/**
+*.pydevproject
+.project
+.metadata/
+bin/**
+tmp/**
+tmp/**/*
+*.apk
+*.tmp
+*.bak
+*.bingit 
+*.swp
+*~.nib
+*.cache
+*.class
+.gitignore~
+local.properties
+.classpath
+.settings/
+.loadpath
+.DS_Store
+
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+bin
+gen

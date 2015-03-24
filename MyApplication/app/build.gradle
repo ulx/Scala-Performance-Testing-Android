@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: "jp.leafytree.android-scala"
+
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.rusin.scalapefomance"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+
+    dexOptions {
+        preDexLibraries false
+        javaMaxHeapSize "2g"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles  'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'org.scala-lang:scala-library:2.11.6'
+}
+
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith("dex")
+    }.each { dx ->
+        dx.additionalParameters = (dx.additionalParameters ?: []) + [
+                "--multi-dex",
+                "--main-dex-list=$rootDir/main-dex-list.txt".toString(),
+        ]
+    }
+
+
+}
