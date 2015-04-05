@@ -5,6 +5,7 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,10 +19,13 @@ public class JavaPerformanceTest extends Activity{
 	Debug.InstructionCount icount = new Debug.InstructionCount();
 	String output = "";
 	ArrayList<RandomString> list = populateList();
+	public static String PATH = "";
+	private final int COUNT_POPULATE = 1000;
 	
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		PATH = getApplicationContext().getFilesDir().getAbsolutePath();
 		setContentView(R.layout.main);
 		startProgram();
 		System.err.println(list.size());
@@ -38,7 +42,7 @@ public class JavaPerformanceTest extends Activity{
 				long end = timer();
 				writeOutput(start,end,"Sorting = ");
 				FileHandling.writeList(list);
-				tv.setText("Status: Sorted" + "Sorting time = " + (end - start));
+				tv.setText("Status: Sorted" + " Sorting time = " + (end - start));
 				Toast.makeText(JavaPerformanceTest.this, "Searching time = " + (end - start), Toast.LENGTH_SHORT ).show();
 			}
 		});
@@ -76,7 +80,7 @@ public class JavaPerformanceTest extends Activity{
 	public ArrayList<RandomString> populateList() {
 		Random random = new Random();
 		ArrayList<RandomString> list = new ArrayList<RandomString>();
-		for (int i = 0; i < 100; i++){
+		for (int i = 0; i < COUNT_POPULATE; i++){
 			RandomString rs = new RandomString(random.nextInt(10000),random.nextInt(100));
 			list.add(rs);
 		}

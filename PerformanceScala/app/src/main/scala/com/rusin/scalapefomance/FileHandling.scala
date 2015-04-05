@@ -9,7 +9,7 @@ object FileHandling {
 
 	def writeList(list: List[RandomString]){
 		try{
-			val file = new File("/sdcard/list.txt")
+			val file = new File(MainActivity.PATH + "/list.txt")
 			file createNewFile
 			val out = new BufferedWriter(new FileWriter(file))
 			for ( i <- 0 until (list.size-1))
@@ -22,7 +22,7 @@ object FileHandling {
 	def writeLog(log: String){
 		try  
 		{  
-			val file = new File("/sdcard/Scala.log")
+			val file = new File(MainActivity.PATH + "/Scala.log")
 			file createNewFile
 			val out = new BufferedWriter(new FileWriter(file))
 			out write(log)

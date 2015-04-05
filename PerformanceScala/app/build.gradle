@@ -19,10 +19,20 @@ android {
         javaMaxHeapSize "2g"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("release.keystore.jks")
+            storePassword "111111"
+            keyAlias "scala"
+            keyPassword "111111"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles  'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }

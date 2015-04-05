@@ -1,5 +1,7 @@
 package com.rusin.performancejava;
 
+import android.os.Environment;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.FileWriter;
@@ -10,7 +12,7 @@ public class FileHandling {
 
 	public static void writeList(ArrayList<RandomString> list){
 		try{
-			File file = new File("/sdcard/jlist.txt");
+			File file = new File( JavaPerformanceTest.PATH + "/jlist.txt");
 			file.createNewFile();
 			BufferedWriter out = new BufferedWriter(new FileWriter(file));
 			for ( int i = 0; i < list.size()-1; i++)
@@ -23,7 +25,7 @@ public class FileHandling {
 	public static void writeLog(String log){
 		try  
 		{  
-			File file = new File("/sdcard/Java.log");
+			File file = new File(JavaPerformanceTest.PATH + "/Java.log");
 			file.createNewFile();
 			BufferedWriter out = new BufferedWriter(new FileWriter(file));
 			out.write(log);
